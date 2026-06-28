@@ -165,21 +165,6 @@ public:
 
 	__declspec(property(get = GetAccountBalance, put = SetAccountBalance))float AccountBalance;
 
-	void Print()
-	{
-		cout << "\nClinet Card : ";
-		cout << "\n--------------------------";
-		cout << "\nFirst Name       : " << FirstName;
-		cout << "\nLast Name        : " << LastName;
-		cout << "\nFull Name        : " << GetFullName();
-		cout << "\nEmail            : " << Email;
-		cout << "\nPhone            : " << Phone;
-		cout << "\nAccount Number   : " <<_AccountNumber;
-		cout << "\nPassword         : " << _PinCode;
-		cout << "\nAccount Balance  : " << _AccountBalance;
-		cout << "\n--------------------------";
-	}
-
 	static clsBankClient Find(string AccountNumber)
 	{
 		vector<clsBankClient> vClients;
@@ -253,6 +238,25 @@ public:
 		_SaveClientDataToFile(vClient);
 		*this = _GetEmptyClientObject();
 		return true;
+	}
+	
+	void Deposit(double Amount)
+	{
+		_AccountBalance += Amount;
+		Save();
+	}
+
+	bool Withdraw(double Amount)
+	{
+		if (Amount > _AccountBalance)
+		{
+			return false;
+		}
+		else
+		{
+			_AccountBalance -= Amount;
+			Save();
+		}
 	}
 
 	enum enSaveResults { svFaildEmptyObject = 0, svSucceeded = 1, svFaildAccountNumberExists = 2 };

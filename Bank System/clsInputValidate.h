@@ -27,8 +27,6 @@ public:
 
 	}
 
-
-
 	static bool IsNumberBetween(double Number, double From, double To)
 	{
 		if (Number >= From && Number <= To)
@@ -67,6 +65,29 @@ public:
 			cin.clear();
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 			cout << ErrorMessage;
+		}
+		return Number;
+	}
+
+	static short ReadShortNumber(string ErrorMessage = "Invalid Number, Enter again\n")
+	{
+		short Number;
+		while (!(cin >> Number)) {
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cout << ErrorMessage;
+		}
+		return Number;
+	}
+
+	static short ReadShortNumberBetween(short From, short To, string ErrorMessage = "Number is not within range, Enter again:\n")
+	{
+		short Number = ReadIntNumber();
+
+		while (!IsNumberBetween(Number, From, To))
+		{
+			cout << ErrorMessage;
+			Number = ReadIntNumber();
 		}
 		return Number;
 	}
