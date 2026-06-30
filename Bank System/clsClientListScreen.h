@@ -9,7 +9,7 @@ class clsClientListScreen : protected clsScreen
 private:
    static void _PrintClientRecordLine(clsBankClient Client)
     {
-       cout << setw(8) << left << "" << "| " << setw(15) << left << Client.GetAccountNumber();
+       cout << setw(8) << left << "" << "| " << setw(15) << left << Client.AccountNumber();
        cout << "| " << setw(20) << left << Client.GetFullName();
        cout << "| " << setw(12) << left << Client.Phone;
        cout << "| " << setw(20) << left << Client.Email;
@@ -26,7 +26,7 @@ public:
             return;
         }
 
-        vector<clsBankClient>vClients = clsBankClient::GetClientLists();
+        vector<clsBankClient>vClients = clsBankClient::GetClientsList();
         string Title = "\t  Client List Screen";
         string SubTitle = "t   (" + to_string(vClients.size()) + ")Clients (s) ";
         _DrawScreenHeader(Title, SubTitle);

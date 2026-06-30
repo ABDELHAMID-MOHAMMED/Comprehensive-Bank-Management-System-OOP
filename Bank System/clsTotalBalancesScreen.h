@@ -9,7 +9,7 @@ class clsTotalBalancesScreen :protected clsScreen
 private:
     static void _PrintClientRecordBalancesLine(clsBankClient Client)
     {
-        cout << setw(25) << left << "" << "| " << setw(15) << left << Client.GetAccountNumber();
+        cout << setw(25) << left << "" << "| " << setw(15) << left << Client.AccountNumber();
         cout << "| " << setw(40) << left << Client.GetFullName();
         cout << "| " << setw(12) << left << Client.AccountBalance;
     }
@@ -19,7 +19,7 @@ public:
     static void ShowTotalBalances()
     {
 
-        vector<clsBankClient>vClients = clsBankClient::GetClientLists();
+        vector<clsBankClient>vClients = clsBankClient::GetClientsList();
         string Title = "\t  Balance List Screen";
         string SubTitle = "\t   (" + to_string(vClients.size()) + ")Clients (s). ";
         
