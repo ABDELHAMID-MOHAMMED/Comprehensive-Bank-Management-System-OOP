@@ -313,31 +313,23 @@ public:
 
     static vector<string> Split(string S1, string Delim)
     {
-
         vector<string> vString;
-
         short pos = 0;
-        string sWord; // define a string variable  
+        string sWord;
 
-        // use find() function to get the position of the delimiters  
         while ((pos = S1.find(Delim)) != std::string::npos)
         {
-            sWord = S1.substr(0, pos); // store the word   
-            // if (sWord != "")
-            // {
+            sWord = S1.substr(0, pos);
             vString.push_back(sWord);
-            //}
-
-            S1.erase(0, pos + Delim.length());  /* erase() until positon and move to next word. */
+            S1.erase(0, pos + Delim.length());
         }
 
-        if (S1 != "")
+        if (!S1.empty())
         {
-            vString.push_back(S1); // it adds last word of the string.
+            vString.push_back(S1);
         }
 
         return vString;
-
     }
 
     vector<string> Split(string Delim)

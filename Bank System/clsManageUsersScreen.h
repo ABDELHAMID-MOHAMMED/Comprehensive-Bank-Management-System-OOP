@@ -20,7 +20,7 @@ private:
 	static short _ReadManageUsersMenuOption()
 	{
 		cout << setw(37) << left << "" << "Choose what do you want to do ? [1 to 6]? ";
-		short Choise = clsInputValidate::ReadShortNumberBetween(1, 6, "Enter Number between 1 to 6 ? ");
+		short Choise = clsInputValidate::ReadNumberBetween(1, 6, "Enter Number between 1 to 6 ? ");
 		return Choise;
 	}
 
@@ -70,30 +70,35 @@ private:
 			system("cls");
 			_ShowListUsersScreen();
 			_GoBackManageUsersMenu();
+			break;
 		}
 		case enUsersMenuOptions::eAddNewUser:
 		{
 			system("cls");
 			_ShowAddNewUserScreen();
 			_GoBackManageUsersMenu();
+			break;
 		}
 		case enUsersMenuOptions::eDeleteUser:
 		{
 			system("cls");
 			_ShowDeleteUserScreen();
 			_GoBackManageUsersMenu();
+			break;
 		}
 		case enUsersMenuOptions::eUpdateUser:
 		{
 			system("cls");
 			_ShowUpdateUserScreen();
 			_GoBackManageUsersMenu();
+			break;
 		}
 		case enUsersMenuOptions::eFindUser:
 		{
 			system("cls");
 			_ShowFindUserScreen();
 			_GoBackManageUsersMenu();
+			break;
 		}
 		case enUsersMenuOptions::eUsersMenu:
 		{

@@ -13,6 +13,7 @@
 #include "clsLoginScreen.h"
 #include "Global.h"
 #include "clsLoginRegisterScreen.h"
+#include "clsCurrencyExchangeScreen.h"
 class clsMainScreen :protected clsScreen
 {
 private:
@@ -20,13 +21,13 @@ private:
 	enum enMainMenueOptions {
 		eListClients = 1, eAddNewClient = 2, eDeleteClient = 3,
 		eUpdateClient = 4, eFindClient = 5, eShowTransactionsMenue = 6,
-		eManageUsers = 7, eLoginRegister = 8, eExit = 9
+		eManageUsers = 7, eLoginRegister = 8, eCurrencyExchange = 9, eExit = 10
 	};
 
 	static short _ReadMainMenuOption()
 	{
-		cout<<setw(37)<<left<<"Choose What do You Want To Do ? [1 to 9]? ";
-		short Choise = clsInputValidate::ReadShortNumberBetween(1,9,"Enter Number Between 1 to 8");
+		cout<<setw(37)<<left<<""<< "Choose What do You Want To Do ? [1 to 10]? ";
+		short Choise = clsInputValidate::ReadNumberBetween(1,10,"Enter Number Between 1 to 10");
 		return Choise;
 	}
 
@@ -84,6 +85,13 @@ private:
 		//cout << "\nLogin Register list Screen Will be here...\n";
 		clsLoginRegisterScreen::ShowLoginRegisterScreen();
 	}
+
+	static void _ShowCurrencyExchangeScreen()
+	{
+		//cout << "\nCurrency Exchange Screen Will be here...\n";
+		clsCurrencyExchangeScreen::ShowCurrencyExchangeScreen();
+	}
+
 
 	static void _Logout()
 	{
@@ -151,6 +159,13 @@ private:
 			_GoBackToMainMenu();
 			break;
 		}
+		case enMainMenueOptions::eCurrencyExchange:
+		{
+			system("cls");
+			_ShowCurrencyExchangeScreen();
+			_GoBackToMainMenu();
+			break;
+		}
 		case enMainMenueOptions::eExit:
 		{
 			system("cls");
@@ -183,7 +198,8 @@ public:
 		cout << setw(37) << left << "" << "\t[6] Transactions.\n";
 		cout << setw(37) << left << "" << "\t[7] Manage Users.\n";
 		cout << setw(37) << left << "" << "\t[8] Login Register.\n";
-		cout << setw(37) << left << "" << "\t[9] Logout.\n";
+		cout << setw(37) << left << "" << "\t[9] Currency Exchange.\n";
+		cout << setw(37) << left << "" << "\t[10] Logout.\n";
 		cout << setw(37) << left << "" << "===========================================\n";
 		_PerformMainMenuOption(enMainMenueOptions(_ReadMainMenuOption()));
 	}

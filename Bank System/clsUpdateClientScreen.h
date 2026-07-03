@@ -25,7 +25,7 @@ private:
         Client.PinCode = clsInputValidate::ReadString();
 
         cout << "\n Enter Account Balance : ";
-        Client.AccountBalance = clsInputValidate::ReadFloatNumber();
+        Client.AccountBalance = clsInputValidate::ReadNumber<float>();
     }
 
     static void _PrintClient(clsBankClient Client)
